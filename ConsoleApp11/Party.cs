@@ -4,9 +4,14 @@ using System.Collections.Generic;
 
 class Party
 {
-    private IEnumerable<Person> party = new List<Person>();
+    private List<Person> people = new List<Person>();
+    private IEnumerable<Person> party => people;
 
-    IEnumerable<Person> ReturnAll()
+    public void Add(Person person)
+    {
+        people.Add(person);
+    }
+    public IEnumerable<Person> ReturnAll()
     {
         foreach (var person in party)
         {
@@ -15,7 +20,7 @@ class Party
         }
     }
 
-    IEnumerable<Person> ReturnActive()
+    public IEnumerable<Person> ReturnActive()
     {
         foreach (var person in party)
         {
@@ -27,7 +32,7 @@ class Party
         }
     }
 
-    IEnumerable<Person> GetHigherHP(double hp)
+    public IEnumerable<Person> GetHigherHP(double hp)
     {
         var higherHp = party.Where(p => p.Health>hp);
         foreach (var person in higherHp)
@@ -39,11 +44,13 @@ class Party
 
     public double MaxGold()
     {
+        Console.WriteLine(party.Max(n => n.Gold));
         return  party.Max(n => n.Gold);
     }
 
-    IEnumerable<string> GetNames()
+    public IEnumerable<string> GetNames()
     {
+        
         return party.Select(n => n.Name);
     }
 }

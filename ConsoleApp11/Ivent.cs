@@ -1,4 +1,4 @@
-﻿namespace DefaultNamespace;
+﻿namespace ConsoleApp11;
 
 public class Ivent
 {
@@ -12,6 +12,8 @@ public class Ivent
         Description = description;
         Type = type;
     }
+
+    
 
     public void ChangeCharacterictics(int number, string description, string type)
     {
